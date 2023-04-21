@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  labels:
+    component: api-gateway
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      component: api-gateway
+  template:
+    metadata:
+      labels:
+        component: api-gateway
+    spec:
+      containers:
+        - name: api-gateway
+          image: khanghy3004/microservice
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            initialDelaySeconds: 5
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            initialDelaySeconds: 5
+            httpGet:
+              path: /
+              port: http
+          env:
+            - name: NODE_ENV
+              value: testing
+            - name: SERVICEDIR
+              value: dist/services
+            - name: SERVICES
+              value: api
+            - name: PORT
+              value: "3000"
+            - name: CACHER
+              value: redis://redis:6379
+            - name: DB_HOST
+              value: postgres
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_NAME
+              value: postgres
+            - name: DB_USER
+              value: postgres
+            - name: DB_PASSWORD
+              value: postgres
+            - name: TRANSPORTER
+              value: nats://nats:4222
+          envFrom:
+            - configMapRef:
+                name: microservice-cm
