@@ -18,7 +18,7 @@ spec:
         - name: microservice-registry
       containers:
         - name: api-gateway
-          image: registry.kala.ai/nodejs-k8s-microservice/code
+          image: registry.gitlab.com/khanghy3004/nodejs-k8s-microservice:latest
           ports:
             - name: http
               containerPort: 3000

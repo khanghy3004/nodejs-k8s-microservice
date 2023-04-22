@@ -18,7 +18,7 @@ spec:
         - name: microservice-registry
       containers:
         - name: categories-service
-          image: registry.kala.ai/nodejs-k8s-microservice/code
+          image: registry.gitlab.com/khanghy3004/nodejs-k8s-microservice:latest
           env:
             - name: SERVICES
               value: categories
@@ -65,7 +65,7 @@ spec:
         - name: microservice-registry
       containers:
         - name: news-service
-          image: registry.kala.ai/nodejs-k8s-microservice/code
+          image: registry.gitlab.com/khanghy3004/nodejs-k8s-microservice:latest
           env:
             - name: SERVICES
               value: news
