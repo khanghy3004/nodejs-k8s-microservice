@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: categories-service
-          image: khanghy3004/microservice
+          image: registry.kala.ai/nodejs-k8s-microservice/code
           env:
             - name: SERVICES
               value: categories
@@ -61,7 +61,7 @@ spec:
     spec:
       containers:
         - name: news-service
-          image: khanghy3004/microservice
+          image: registry.kala.ai/nodejs-k8s-microservice/code
           env:
             - name: SERVICES
               value: news
